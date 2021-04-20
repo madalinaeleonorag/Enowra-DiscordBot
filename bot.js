@@ -15,14 +15,11 @@ var bot = new Discord.Client({
 
 bot.on("ready", function (evt) {
   logger.info("Connected");
-  logger.info("Logged in as: ");
-  logger.info(bot.username);
 });
 
 bot.on("message", function (user, userID, channelID, message, evt) {
-
   if (message.substring(0, 1) == "!") {
-
+    // case if user call the bot by the command
     var args = message.substring(1).split(" ");
     var cmd = args[0];
     args = args.splice(1);
@@ -35,7 +32,20 @@ bot.on("message", function (user, userID, channelID, message, evt) {
           message: "Pong!",
         });
         break;
-      // Just add any case commands if you want to..
+    }
+  } else {
+    // case if the bot is called by default on some words
+    const noNoWords = ["discord.gg"];
+
+    message.replace(/\s+/g, "").toLowerCase();
+    for (var i = 0; i < noNoWords.length; i++) {
+      if (message.includes(noNoWords[i])) {
+        bot.deleteMessage({
+          channelID,
+          messageID: evt.d.id,
+        });
+        break;
+      }
     }
   }
 });

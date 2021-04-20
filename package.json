@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Random discord bot",
   "main": "bot.js",
+  "permissions": 8,
   "author": "Madalina-Eleonora Gheorghe",
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",

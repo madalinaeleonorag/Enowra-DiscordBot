@@ -1,3 +1,5 @@
+Basic Discord bot which answer to !ping command with "pong" and removes all messages which contains invite links to discord servers.
+
 Create and edit your bots [HERE](https://discord.com/developers/applications)
 
 Run "node bot.js" to serve live the bot

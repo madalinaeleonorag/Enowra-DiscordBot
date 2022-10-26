@@ -1,6 +1,5 @@
-// REPLIT.COM localhost hosting
-// https://replit.com/@madalinaeleonor/Enowra-DiscordBot
 const express = require("express");
+const config = require("./config.json");
 const app = express();
 const port = 3000;
 app.get("/", (req, res) => res.send("Hello World!"));
@@ -10,7 +9,6 @@ app.listen(port, () =>
 
 var Discord = require("discord.io");
 var logger = require("winston");
-var auth = require("./auth.json");
 
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console(), {
@@ -19,7 +17,7 @@ logger.add(new logger.transports.Console(), {
 logger.level = "debug";
 
 var bot = new Discord.Client({
-  token: auth.token,
+  token: config.BOT_TOKEN,
   autorun: true,
 });
 
